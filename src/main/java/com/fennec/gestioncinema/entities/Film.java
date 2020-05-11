@@ -15,7 +15,7 @@ public class Film implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String titre;
     private double duree;
     private String realisateur;

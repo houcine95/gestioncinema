@@ -13,7 +13,7 @@ import java.util.Collection;
 public class Ville implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private double longitude;
     private double latitude;

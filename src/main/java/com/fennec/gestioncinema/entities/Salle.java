@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -18,4 +16,13 @@ public class Salle implements Serializable {
     private int id;
     private String name;
     private int nombrePlace;
+
+    @ManyToOne @JoinColumn(name = "id_cinema")
+    private Cinema cinema;
+
+    @OneToMany(mappedBy = "salle")
+    private Collection<Place> places;
+
+    @OneToMany(mappedBy = "salle")
+    private Collection<ProjectionFilm> projectionFilms;
 }

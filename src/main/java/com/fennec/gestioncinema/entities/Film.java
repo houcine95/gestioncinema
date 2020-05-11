@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -24,4 +22,10 @@ public class Film implements Serializable {
     private String description;
     private String photo;
     private Date dateSortie;
+
+    @ManyToOne @JoinColumn(name = "id_categorie")
+    private Categorie categorie;
+
+    @OneToMany(mappedBy = "film")
+    private Collection<ProjectionFilm> projectionFilms;
 }

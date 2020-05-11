@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -19,6 +16,13 @@ public class Ticket implements Serializable {
     private int id;
     private String nomClient;
     private double prix;
+    @Column(unique = true)
     private int codePayement;
     private boolean reservee;
+
+    @ManyToOne @JoinColumn(name = "id_place")
+    private Place place;
+
+    @ManyToOne @JoinColumn(name = "id_projection")
+    private ProjectionFilm projectionFilm;
 }
